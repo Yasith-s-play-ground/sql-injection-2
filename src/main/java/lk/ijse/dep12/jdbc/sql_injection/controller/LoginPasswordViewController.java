@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
 import lk.ijse.dep12.jdbc.sql_injection.db.SingletonConnection;
@@ -28,6 +29,11 @@ public class LoginPasswordViewController {
     public Button btnLogin;
 
     public PasswordField txtPassword;
+    public Label lblFullName;
+
+    public void initialize() {
+        lblFullName.setText(System.getProperty("app.principal.fullName")); // set full name to label
+    }
 
     public void btnBackOnAction(ActionEvent event) throws IOException {
         Stage stage = new Stage();
@@ -65,8 +71,8 @@ public class LoginPasswordViewController {
             rst.next();
             String hashedPassword = rst.getString("password"); //get password from database
             if (hashedPassword.equals(DigestUtils.sha256Hex(password))) { //compare hash of entered password
-                String fullName = rst.getString("full_name"); //get user's full name
-                System.setProperty("app.principal.fullName", fullName); // set full name property
+//                String fullName = rst.getString("full_name"); //get user's full name
+//                System.setProperty("app.principal.fullName", fullName); // set full name property
                 Stage stage = new Stage();
                 stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/MainView.fxml"))));
                 stage.setOnCloseRequest(Event::consume);

@@ -44,12 +44,13 @@ public class LoginUserNameViewController {
         try {
             Connection connection = SingletonConnection.getInstance().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("""
-                    SELECT FROM "user" WHERE username=?
+                    SELECT full_name FROM "user" WHERE username=?
                     """);
             preparedStatement.setString(1, userName.strip());
             ResultSet rst = preparedStatement.executeQuery();
             if (rst.next()) {
                 System.setProperty("app.principal.username", userName.strip());
+                System.setProperty("app.principal.fullName", rst.getString("full_name")); // set full name property
                 Stage stage = new Stage();
                 stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/LoginPasswordView.fxml"))));
                 //stage.setOnCloseRequest(Event::consume);
