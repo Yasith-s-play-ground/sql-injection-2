@@ -2,7 +2,6 @@ package lk.ijse.dep12.jdbc.sql_injection.controller;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -20,11 +19,8 @@ import java.sql.SQLException;
 public class LoginUserNameViewController {
 
     public Button btnContinue;
-
     public Button btnExit;
-
     public Button btnRegister;
-
     public TextField txtUserName;
 
     public void initialize() {
@@ -68,7 +64,6 @@ public class LoginUserNameViewController {
             e.printStackTrace();
             new Alert(Alert.AlertType.ERROR, "Something went wrong, please try again").show();
         }
-
     }
 
     public void btnExitOnAction(ActionEvent event) {

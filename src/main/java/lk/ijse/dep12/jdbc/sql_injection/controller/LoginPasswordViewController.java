@@ -3,7 +3,6 @@ package lk.ijse.dep12.jdbc.sql_injection.controller;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -23,11 +22,8 @@ import java.sql.SQLException;
 public class LoginPasswordViewController {
 
     public Button btnBack;
-
     public Button btnExit;
-
     public Button btnLogin;
-
     public PasswordField txtPassword;
     public Label lblFullName;
 
