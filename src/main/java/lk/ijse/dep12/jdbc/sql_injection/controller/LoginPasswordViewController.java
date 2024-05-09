@@ -36,6 +36,7 @@ public class LoginPasswordViewController {
     }
 
     public void btnBackOnAction(ActionEvent event) throws IOException {
+        removeAddedSystemProperties();
         Stage stage = new Stage();
         stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/LoginUserNameView.fxml"))));
         //stage.setOnCloseRequest(Event::consume);
@@ -90,6 +91,11 @@ public class LoginPasswordViewController {
             e.printStackTrace();
             new Alert(Alert.AlertType.ERROR, "Something went wrong, please try again").show();
         }
+    }
+
+    private void removeAddedSystemProperties() {
+        System.getProperties().remove("app.principal.username"); // remove principal username when logging out
+        System.getProperties().remove("app.principal.fullName"); // remove principal full name when logging out
     }
 
 }
